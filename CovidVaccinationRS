@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "2352a1c4-0dc0-43bc-80dc-6d6847b42f51",
+		"name": "CovidVaccinationRS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29343544"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Liam Allen\",\r\n    \"email\": \"liam.allen@gmail.com\",\r\n    \"phone\": \"0123456791\",\r\n    \"nid\": \"2134567890123111\",\r\n    \"vaccine_center_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8000/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8000/api/search/2234567890123"
+			},
+			"response": []
+		},
+		{
+			"name": "centers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8000/api/centers"
+			},
+			"response": []
+		}
+	]
+}
