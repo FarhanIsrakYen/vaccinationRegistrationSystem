@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class VaccineRegistrationController extends Controller
 {
-    protected $vaccinationService;
+    protected VaccinationService $vaccinationService;
 
     public function __construct(VaccinationService $vaccinationService)
     {

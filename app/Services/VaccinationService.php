@@ -53,7 +53,7 @@ class VaccinationService
     private function getScheduleDate($lastScheduledDate = null, $center = null)
     {
         if (empty($lastScheduledDate)) {
-            return self::getNextWeekday();
+            return $this->getNextWeekday();
         }
 
         $currentCount = VaccinationRegistration::where('center_id', $center->id)
@@ -61,7 +61,7 @@ class VaccinationService
                             ->count();
 
         return ($currentCount >= $center->daily_limit)
-            ? self::getNextWeekday($lastScheduledDate)
+            ? $this->getNextWeekday($lastScheduledDate)
             : $lastScheduledDate;
     }
 
@@ -74,7 +74,7 @@ class VaccinationService
         return $date->format('Y-m-d');
     }
 
-    public function checkRegistrationStatus($nid)
+    public function checkRegistrationStatus($nid): string
     {
         $user = User::where('nid', $nid)->first();
 
@@ -82,7 +82,8 @@ class VaccinationService
             return 'Not registered';
         }
 
-        $vaccinationRegistration = VaccinationRegistration::where('user_id', $user->id)->select('scheduled_date')->first();
+        $vaccinationRegistration = VaccinationRegistration::where('user_id', $user->id)
+                                    ->select('scheduled_date')->first();
 
         if (!empty($vaccinationRegistration) && $vaccinationRegistration['scheduled_date']) {
             if ($vaccinationRegistration['scheduled_date'] < now()) {

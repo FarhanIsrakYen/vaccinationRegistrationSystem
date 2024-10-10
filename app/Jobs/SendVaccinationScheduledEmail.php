@@ -14,7 +14,7 @@ class SendVaccinationScheduledEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected User $user;
     protected $vaccinationDate;
     protected $vaccineCenter;
 
@@ -25,7 +25,7 @@ class SendVaccinationScheduledEmail implements ShouldQueue
         $this->vaccineCenter = $vaccineCenter;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $this->user->notify(new VaccinationScheduledNotification($this->user, $this->vaccinationDate, $this->vaccineCenter));
     }
