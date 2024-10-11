@@ -37,6 +37,7 @@ class VaccinationAlertNotification extends Notification
                     ->greeting('Hello ' . $this->user->name . ',')
                     ->line('Your vaccination is scheduled for tomorrow at ' . $this->vaccineCenter . '.')
                     ->line('Please arrive at the center at your scheduled time.')
-                    ->line('Thank you for registering for vaccination!');
+                    ->line('Thank you for registering for vaccination!')
+                    ->salutation('Regards, The Vaccination Team');;
     }
 }
